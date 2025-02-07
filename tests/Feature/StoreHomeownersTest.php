@@ -51,7 +51,7 @@ class StoreHomeownersTest extends TestCase
         return [
             'file is required' => [null, 'The file field is required.'],
             'file must be a file' => ['not a file', 'The file field must be a file.'],
-            'file must be a CSV or TXT file' => [UploadedFile::fake()->image('not-a-csv.png'), 'The file field must be a file of type: csv, txt.'],
+            'file must be a csv or txt file' => [UploadedFile::fake()->image('not-a-csv.png'), 'The file field must be a file of type: csv, txt.'],
         ];
     }
 }
