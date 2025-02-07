@@ -46,9 +46,6 @@ If there was more time, the following improvements could be made:
 8. **Updated Auth Screens**:
    - Update authentication screens from Breeze defaults to match Shdacn components for a consistent and modern UI.
 
-8. **Updated Auth Screens**:
-   - Update authentication screens from Breeze defaults to match Shdacn components for a consistent and modern UI.
-
 9. **Create Lookup Table For Titles**:
    - Titles that mean the same (eg. "Mr" and "Mister") should be normalised.
 
