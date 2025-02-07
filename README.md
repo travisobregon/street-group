@@ -78,3 +78,10 @@ php artisan migrate
 ```sh
 composer run dev
 ```
+
+### Screenshots
+![test test_homeowners_page=1 (3)](https://github.com/user-attachments/assets/ad79805b-bd46-4d50-86c7-884f065def98)
+
+<img width="775" alt="Screenshot 2025-02-06 at 11 21 32 PM" src="https://github.com/user-attachments/assets/d959291a-814d-4b54-ba55-87b1370812c8" />
+
+
