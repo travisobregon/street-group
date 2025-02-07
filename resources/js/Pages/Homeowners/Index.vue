@@ -104,7 +104,11 @@ function submit() {
                     </form>
 
                     <DialogFooter>
-                        <Button type="submit" form="importHomeownersForm">
+                        <Button
+                            type="submit"
+                            form="importHomeownersForm"
+                            :disabled="form.processing"
+                        >
                             Submit
                         </Button>
                     </DialogFooter>
