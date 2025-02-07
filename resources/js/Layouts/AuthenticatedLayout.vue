@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import NavLink from '@/Components/NavLink.vue';
 import { Link } from '@inertiajs/vue3';
 
 import { Button } from '@/components/ui/button';
@@ -10,8 +9,9 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { CircleUser, MapPinHouse, Menu } from 'lucide-vue-next';
 import Toaster from '@/Components/ui/toast/Toaster.vue';
+import { cn } from '@/lib/utils';
+import { CircleUser, MapPinHouse, Menu } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -31,7 +31,14 @@ import Toaster from '@/Components/ui/toast/Toaster.vue';
                 </Link>
                 <Link
                     :href="route('homeowners.index')"
-                    class="text-foreground transition-colors hover:text-foreground"
+                    :class="
+                        cn(
+                            'transition-colors hover:text-foreground',
+                            route().current('homeowners.index')
+                                ? 'text-foreground'
+                                : 'text-muted-foreground',
+                        )
+                    "
                 >
                     Homeowners
                 </Link>
@@ -56,16 +63,19 @@ import Toaster from '@/Components/ui/toast/Toaster.vue';
                             <MapPinHouse class="h-6 w-6" />
                             <span class="sr-only">Street Group</span>
                         </Link>
-                        <NavLink
-                            :href="route('dashboard')"
-                            :active="route().current('dashboard')"
-                            >Dashboard</NavLink
-                        >
-                        <NavLink
+                        <Link
                             :href="route('homeowners.index')"
-                            :active="route().current('homeowners.index')"
-                            >Homeowners</NavLink
+                            :class="
+                                cn(
+                                    'transition-colors hover:text-foreground',
+                                    route().current('homeowners.index')
+                                        ? ''
+                                        : 'text-muted-foreground',
+                                )
+                            "
                         >
+                            Homeowners
+                        </Link>
                     </nav>
                 </SheetContent>
             </Sheet>
@@ -83,10 +93,7 @@ import Toaster from '@/Components/ui/toast/Toaster.vue';
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                         <DropdownMenuItem>
-                            <Link
-                                :href="route('logout')"
-                                method="post"
-                            >
+                            <Link :href="route('logout')" method="post">
                                 Logout
                             </Link>
                         </DropdownMenuItem>
