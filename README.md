@@ -46,6 +46,12 @@ If there was more time, the following improvements could be made:
 8. **Updated Auth Screens**:
    - Update authentication screens from Breeze defaults to match Shdacn components for a consistent and modern UI.
 
+8. **Updated Auth Screens**:
+   - Update authentication screens from Breeze defaults to match Shdacn components for a consistent and modern UI.
+
+9. **Create Lookup Table For Titles**:
+   - Titles that mean the same (eg. "Mr" and "Mister") should be normalised.
+
 ### Installation
 
 1. Clone the repository:
@@ -54,18 +60,21 @@ If there was more time, the following improvements could be made:
    cd street-group
 ```
 
-1. Install dependencies 
+2. Install dependencies 
 ```sh
 composer install
 npm install
 ```
 
-1. Run migrations
+3. Run migrations
 ```sh
+cp .env.example .env
+php artisan key:generate
+touch database/database.sqlite
 php artisan migrate
 ```
 
-1. Run app
+4. Run app
 ```sh
 composer run dev
 ```
