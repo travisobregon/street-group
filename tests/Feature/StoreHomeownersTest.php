@@ -23,7 +23,7 @@ class StoreHomeownersTest extends TestCase
     public function authenticated_users_can_import_homeowners(): void
     {
         $user = User::factory()->create();
-        
+
         $this->actingAs($user)
             ->post(route('homeowners.store'), [
                 'file' => new UploadedFile(__DIR__.'/../stubs/homeowners.csv', 'homeowners.csv', 'text/csv', test: true),
@@ -37,7 +37,7 @@ class StoreHomeownersTest extends TestCase
     public function it_validates_input($value, $message): void
     {
         $user = User::factory()->create();
-        
+
         $response = $this->actingAs($user)
             ->post(route('homeowners.store'), [
                 'file' => $value,

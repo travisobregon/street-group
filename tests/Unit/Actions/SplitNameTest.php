@@ -14,7 +14,7 @@ class SplitNameTest extends TestCase
     #[DataProvider('titleProvider')]
     public function it_can_handle_different_titles(string $title): void
     {
-        $result = with(new SplitName())->handle("{$title} Smith");
+        $result = with(new SplitName)->handle("{$title} Smith");
 
         $this->assertSame([[
             'title' => $title,
@@ -27,8 +27,8 @@ class SplitNameTest extends TestCase
     #[Test]
     public function it_can_handle_an_initial_with_a_period(): void
     {
-        $result = with(new SplitName())->handle('Mr F. Fredrickson');
-    
+        $result = with(new SplitName)->handle('Mr F. Fredrickson');
+
         $this->assertSame([[
             'title' => 'Mr',
             'first_name' => null,
@@ -40,8 +40,8 @@ class SplitNameTest extends TestCase
     #[Test]
     public function it_can_handle_an_initial_without_a_period(): void
     {
-        $result = with(new SplitName())->handle('Mr M Mackie');
-    
+        $result = with(new SplitName)->handle('Mr M Mackie');
+
         $this->assertSame([[
             'title' => 'Mr',
             'first_name' => null,
@@ -53,8 +53,8 @@ class SplitNameTest extends TestCase
     #[Test]
     public function it_can_handle_multiple_names_with_and(): void
     {
-        $result = with(new SplitName())->handle('Mr Tom Staff and Mr John Doe');
-    
+        $result = with(new SplitName)->handle('Mr Tom Staff and Mr John Doe');
+
         $this->assertSame([
             [
                 'title' => 'Mr',
@@ -67,15 +67,15 @@ class SplitNameTest extends TestCase
                 'first_name' => 'John',
                 'initial' => null,
                 'last_name' => 'Doe',
-            ]
+            ],
         ], $result);
     }
 
     #[Test]
     public function it_can_handle_multiple_names_with_ampersand(): void
     {
-        $result = with(new SplitName())->handle('Dr & Mrs Jane Bloggs');
-    
+        $result = with(new SplitName)->handle('Dr & Mrs Jane Bloggs');
+
         $this->assertSame([
             [
                 'title' => 'Dr',
@@ -88,14 +88,14 @@ class SplitNameTest extends TestCase
                 'first_name' => 'Jane',
                 'initial' => null,
                 'last_name' => 'Bloggs',
-            ]
+            ],
         ], $result);
     }
 
     #[Test]
     public function it_handles_leading_and_trailing_spaces(): void
     {
-        $result = with(new SplitName())->handle('  Mr Smith  ');
+        $result = with(new SplitName)->handle('  Mr Smith  ');
 
         $this->assertSame([[
             'title' => 'Mr',
@@ -112,7 +112,7 @@ class SplitNameTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage($exceptionMessage);
 
-        with(new SplitName())->handle($input);
+        with(new SplitName)->handle($input);
     }
 
     public static function titleProvider(): array
@@ -132,15 +132,15 @@ class SplitNameTest extends TestCase
         return [
             'missing title' => [
                 'Smith',
-                'Invalid or missing title'
+                'Invalid or missing title',
             ],
             'invalid title' => [
                 'Sir Smith',
-                'Invalid or missing title'
+                'Invalid or missing title',
             ],
             'missing last name' => [
                 'Mr',
-                'Last name is required'
+                'Last name is required',
             ],
         ];
     }

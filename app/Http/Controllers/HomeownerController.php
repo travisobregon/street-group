@@ -24,14 +24,14 @@ class HomeownerController extends Controller
     {
         $request->validate(['file' => ['required', 'file', 'mimes:csv,txt']]);
 
-       try {
+        try {
             SimpleExcelReader::create($request->file('file')->getPathname(), 'csv')
                 ->useHeaders(['homeowner'])
                 ->getRows()
-                ->flatMap(fn (array $row) => with(new SplitName())->handle($row['homeowner']))
+                ->flatMap(fn (array $row) => with(new SplitName)->handle($row['homeowner']))
                 ->each(fn (array $attributes) => Homeowner::query()->create($attributes));
         } catch (Exception $e) {
-            return back()->withErrors(['file' => 'Failed to import homeowners: ' . $e->getMessage()]);
+            return back()->withErrors(['file' => 'Failed to import homeowners: '.$e->getMessage()]);
         }
 
         return back();

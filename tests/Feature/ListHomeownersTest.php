@@ -24,9 +24,9 @@ class ListHomeownersTest extends TestCase
         $user = User::factory()->create();
         Homeowner::factory()->create(['title' => 'Mr', 'first_name' => 'Tom', 'initial' => null, 'last_name' => 'Staff']);
         Homeowner::factory()->create(['title' => 'Mrs', 'first_name' => 'Heather', 'initial' => null, 'last_name' => 'Staff']);
-        
+
         $this->actingAs($user)
-            ->get(route('homeowners.index')) 
+            ->get(route('homeowners.index'))
             ->assertInertia(fn (Assert $assert) => $assert
                 ->component('Homeowners/Index')
                 ->has('homeowners.data', 2)
@@ -48,6 +48,6 @@ class ListHomeownersTest extends TestCase
                     ->where('initial', null)
                     ->where('last_name', 'Staff')
                 )
-        );
+            );
     }
 }

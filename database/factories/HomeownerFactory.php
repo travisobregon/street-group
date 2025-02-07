@@ -19,7 +19,7 @@ class HomeownerFactory extends Factory
         return [
             'title' => fake()->randomElement(['Mr', 'Mister', 'Mrs', 'Ms', 'Dr', 'Prof']),
             'first_name' => fake()->optional()->firstName(),
-            'initial' => optional(fake()->optional()->randomLetter(), fn($initial) => strtoupper($initial)),
+            'initial' => optional(fake()->optional()->randomLetter(), fn ($initial) => strtoupper($initial)),
             'last_name' => fake()->lastName(),
         ];
     }
