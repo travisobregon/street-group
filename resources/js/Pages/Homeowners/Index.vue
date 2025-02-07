@@ -60,7 +60,7 @@ function submit() {
         },
         onError: () => {
             toast({
-                description: 'Failed to import homeowners',
+                description: form.errors.file,
                 variant: 'destructive',
             });
         },
