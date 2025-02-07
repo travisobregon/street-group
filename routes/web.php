@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/homeowners', [HomeownerController::class, 'index'])->name('homeowners.index');
+    Route::post('/homeowners', [HomeownerController::class, 'store'])->name('homeowners.store');
 });
 
 require __DIR__.'/auth.php';
